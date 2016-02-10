@@ -4,12 +4,12 @@
 %global	gem_name	rspec-expectations
 
 # %%check section needs rspec, however rspec depends on rspec-expectations
-%global	need_bootstrap	1
+%global	need_bootstrap	0
 
 Summary:	Rspec-2 expectations (should and matchers) 
 Name:		%{?scl_prefix}rubygem-%{gem_name}
 Version:2.14.5
-Release:4%{?dist}
+Release:5%{?dist}
 
 Group:		Development/Languages
 License:	MIT
@@ -80,6 +80,9 @@ popd
 %{gem_instdir}/spec/
 
 %changelog
+* Wed Feb 10 2016 Dominic Cleal <dcleal@redhat.com> 2.14.5-5
+- Enable package check
+
 * Fri Jan 22 2016 Dominic Cleal <dcleal@redhat.com> 2.14.5-4
 - Rebuild for sclo-ror42 SCL
 
