@@ -6,7 +6,7 @@
 %global	rpmminorver	.%(echo %preminorver | sed -e 's|^\\.\\.*||')
 %global	fullver	%{majorver}%{?preminorver}
 
-%global	fedorarel	2
+%global	fedorarel	3
 
 %global	gem_name	rspec-expectations
 
@@ -24,9 +24,11 @@ Source0:	https://rubygems.org/gems/%{gem_name}-%{fullver}.gem
 Source1:	rubygem-%{gem_name}-%{version}-full.tar.gz
 Source2:	rspec-related-create-full-tarball.sh
 
-Requires:      %{?scl_prefix_ruby}ruby(release)
-Requires:      %{?scl_prefix}rubygem(diff-lcs) >= 1.1.3
-Requires:      %{?scl_prefix}rubygem(diff-lcs) < 2.0
+Requires:       %{?scl_prefix_ruby}ruby(rubygems)
+Requires:       %{?scl_prefix}rubygem(rspec-support) => 3.4.0
+Requires:       %{?scl_prefix}rubygem(rspec-support) < 3.5
+Requires:       %{?scl_prefix}rubygem(diff-lcs) >= 1.2.0
+Requires:       %{?scl_prefix}rubygem(diff-lcs) < 2.0
 BuildRequires:	%{?scl_prefix_ruby}ruby(release)
 BuildRequires:	%{?scl_prefix_ruby}rubygems-devel
 %if 0%{?need_bootstrap_set} < 1
