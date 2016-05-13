@@ -6,11 +6,11 @@
 %global	rpmminorver	.%(echo %preminorver | sed -e 's|^\\.\\.*||')
 %global	fullver	%{majorver}%{?preminorver}
 
-%global	fedorarel	3
+%global	fedorarel	4
 
 %global	gem_name	rspec-expectations
 
-%global	need_bootstrap_set	1
+%global	need_bootstrap_set	0
 
 Summary:	Rspec-2 expectations (should and matchers)
 Name:		%{?scl_prefix}rubygem-%{gem_name}
@@ -61,13 +61,11 @@ gem unpack %{SOURCE0}
 gem specification %{SOURCE0} -l --ruby > %{gem_name}.gemspec
 %{?scl:EOF}
 
-
 %build
 %{?scl:scl enable %{scl} - << \EOF}
 gem build %{gem_name}.gemspec
 %gem_install
 %{?scl:EOF}
-
 
 %install
 mkdir -p %{buildroot}%{gem_dir}
@@ -105,7 +103,7 @@ popd
 %{gem_docdir}
 
 %changelog
-* Mon Feb 22 2016 Pavel Valena <pvalena@redhat.com> - 3.4.0-3
+* Mon Feb 22 2016 Pavel Valena <pvalena@redhat.com> - 3.4.0-4
 - Update to 3.4.0
 
 * Fri Jan 16 2015 Josef Stribny <jstribny@redhat.com> - 2.14.5-3
